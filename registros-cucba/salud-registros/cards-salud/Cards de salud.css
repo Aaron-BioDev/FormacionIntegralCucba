@@ -1,0 +1,191 @@
+/* Reset general y tipografía mejorada */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #2d6a4f; /* Verde salud profundo */
+    --accent-color: #52b788;  /* Verde menta para hovers */
+    --text-light: #f8f9fa;
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    padding-bottom: 50px;
+}
+
+/* Menú de Navegación */
+.container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+
+ul {
+    display: flex;
+    justify-content: center; /* Centra los items del menú */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-items {
+    position: relative;
+    display: block;
+    padding: 20px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.list-items:hover {
+    color: var(--primary-color);
+}
+
+.list-items:before {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.list-items:hover:before {
+    transform: scaleX(1);
+}
+
+/* Contenedor de Tarjetas */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 120px; /* Más espacio por el menú fijo */
+    max-width: 1200px;
+}
+
+/* Diseño de la Tarjeta */
+.card {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    margin: 25px;
+    perspective: 1500px; /* Aumentado para un giro más dramático */
+}
+
+.card .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px; /* Bordes más suaves */
+    overflow: hidden;
+    transition: transform .6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Cara Frontal */
+.card .front {
+    transform: rotateY(0deg);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.card .front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.card .front h3 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Cara Trasera */
+.card .back {
+    transform: rotateY(180deg);
+    background: var(--primary-color);
+    padding: 30px;
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.card .back h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.card .back p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card .back .link {
+    margin-top: auto;
+}
+
+.card .back .link a {
+    color: var(--primary-color);
+    background: var(--text-light);
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.card .back .link a:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Efecto de Rotación */
+.card:hover .front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(0deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        width: 280px;
+        height: 380px;
+    }
+}

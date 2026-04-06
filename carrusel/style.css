@@ -1,0 +1,188 @@
+/* ==========================================
+   1. BASE Y CONFIGURACIÓN CINEMATOGRÁFICA
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    /* Transición de fondo suave y profesional */
+    transition: opacity 0.8s ease-in-out, transform 1.2s ease-out;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Solo el segundo item (el activo) es visible y tiene zoom suave */
+.slide .item:nth-child(2) {
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1.05); /* Efecto sutil de cámara lenta */
+}
+
+/* El item que se va preparando detrás */
+.slide .item:nth-child(1) {
+    opacity: 0;
+    z-index: 1;
+}
+
+/* --- CONTENIDO TEXTUAL --- */
+.item .content {
+    position: absolute;
+    color: #fff;
+    z-index: 100;
+    display: none;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+.slide .item:nth-child(2) .content {
+    display: block;
+}
+
+/* Animación de texto "Quico" (rápida y limpia) */
+.content .name, .content .des, .content button {
+    opacity: 0;
+    animation: fadeUp 0.6s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+.content .name { animation-delay: 0.3s; font-weight: 900; text-transform: uppercase; }
+.content .des { animation-delay: 0.4s; }
+.content button { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   2. DISEÑO LAPTOP (Sin Cards)
+   ========================================== */
+@media (min-width: 768px) {
+    .item .content {
+        top: 50%;
+        left: 10%;
+        width: 600px;
+        transform: translateY(-50%);
+    }
+
+    .content .name { font-size: 80px; line-height: 1; }
+    .content .des { font-size: 20px; margin: 20px 0; max-width: 500px; }
+
+    /* Botones de navegación minimalistas */
+    .button {
+        position: absolute;
+        bottom: 50px;
+        right: 100px; /* Movidos a la derecha para no tapar el centro */
+        z-index: 200;
+        display: flex;
+        gap: 20px;
+    }
+
+    .button button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid rgba(255,255,255,0.5);
+        background: rgba(0,0,0,0.2);
+        backdrop-filter: blur(5px);
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button button:hover {
+        background: #fff;
+        color: #000;
+        transform: scale(1.1);
+        border-color: #fff;
+    }
+
+    /* Ocultamos cartas laterales definitivamente */
+    .container .slide .item:nth-child(n+3) {
+        display: none; 
+    }
+}
+
+/* ==========================================
+   3. DISEÑO MÓVIL (Mantiene Swipe Arriba)
+   ========================================== */
+@media (max-width: 767px) {
+    .item .content {
+        top: 50%;
+        left: 50%;
+        width: 85%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding: 30px 20px;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+    }
+
+    .content .name { font-size: 35px; }
+    .button { display: none; }
+
+    .swipe-indicator {
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .swipe-indicator::after {
+        content: "← desliza para ver →";
+        display: inline-block;
+        padding: 8px 18px;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        color: #fff;
+        font-size: 11px;
+        border-radius: 50px;
+        border: 1px solid rgba(255,255,255,0.2);
+        animation: quickSwipe 2s infinite ease-in-out;
+    }
+}
+
+@keyframes quickSwipe {
+    0%, 100% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+}
+
+/* Botón de Acción */
+.content button {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #0072ff, #00c6ff);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}

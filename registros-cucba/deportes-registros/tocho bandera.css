@@ -1,0 +1,230 @@
+/* ===== Variables de tema Tocho Bandera ===== */
+:root {
+  --verde: #004d2a;
+  --verde-claro: #007c3d;
+  --dorado: #ffd700;
+  --blanco: #ffffff;
+  --gris: #f5f5f5;
+  --sombra: 0 6px 20px rgba(0, 0, 0, 0.25);
+  --radio: 12px;
+  --fuente: 'Poppins', sans-serif;
+  --fuente-titulo: 'Anton', sans-serif;
+}
+
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente);
+  background: var(--gris);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+.header {
+  background: linear-gradient(135deg, var(--verde), var(--dorado));
+  text-align: center;
+  padding: 30px 15px;
+  color: var(--blanco);
+  box-shadow: var(--sombra);
+  border-bottom: 5px solid var(--verde-claro);
+}
+
+.gif-header img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-family: var(--fuente-titulo);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Contenedor ===== */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+/* ===== Video ===== */
+.video-section {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: var(--radio);
+  border: 4px solid var(--verde-claro);
+  box-shadow: var(--sombra);
+}
+
+/* ===== Info ===== */
+.info {
+  background: var(--blanco);
+  border-left: 8px solid var(--dorado);
+  box-shadow: var(--sombra);
+  border-radius: var(--radio);
+  text-align: center;
+  padding: 25px;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.info h2 {
+  font-family: var(--fuente-titulo);
+  color: var(--verde);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.info ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.info li {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.info p {
+  font-weight: 600;
+  color: var(--verde-claro);
+}
+
+/* ===== Entrenadores ===== */
+.coaches {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.coaches h2 {
+  color: var(--verde);
+  font-family: var(--fuente-titulo);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.coach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coach-card {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 20px;
+  border-top: 5px solid var(--dorado);
+  box-shadow: var(--sombra);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.coach-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.coach-card img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--verde);
+  margin-bottom: 10px;
+}
+
+.coach-card p {
+  font-weight: 600;
+  color: var(--verde-claro);
+}
+
+/* ===== Botones ===== */
+.buttons {
+  text-align: center;
+  margin: 40px 0 50px;
+}
+
+.btn {
+  background: var(--verde);
+  color: var(--blanco);
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 10px;
+  box-shadow: var(--sombra);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: var(--dorado);
+  color: var(--verde);
+  transform: scale(1.08);
+}
+
+/* ===== WhatsApp ===== */
+.whatsapp {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.whatsapp a {
+  font-size: 40px;
+  color: #25D366;
+  transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp a:hover {
+  transform: scale(1.2);
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 14px;
+  border-top: 4px solid var(--dorado);
+  letter-spacing: 0.5px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .coach-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .coach-grid {
+    grid-template-columns: 1fr;
+  }
+}

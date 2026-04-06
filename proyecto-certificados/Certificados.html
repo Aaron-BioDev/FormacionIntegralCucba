@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación Integral CUCBA | Studio</title>
+    <link rel="stylesheet" href="certificados.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Cinzel:wght@700&family=Playfair+Display:wght@700&family=Montserrat:wght@700&family=Dancing+Script:wght@700&family=EB+Garamond:wght@700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <main class="editor-layout">
+            <aside class="sidebar">
+                <div class="brand">
+                    <div class="udg-logo">
+                        <img src="assent/logo.png" alt="Logo UdeG" id="main-logo">
+                    </div>
+                    <div>
+                        <h1>Formación Integral</h1>
+                        <p>CUCBA - Studio 2026</p>
+                    </div>
+                </div>
+
+                <div class="tools">
+                    <div class="card">
+                        <h3>1. Carga de Datos</h3>
+                        <div class="grid-btns">
+                            <label for="imgInput" class="btn-u">🖼️ Plantilla</label>
+                            <input type="file" id="imgInput" accept="image/*" hidden>
+                            <label for="excelInput" class="btn-u">📊 Excel</label>
+                            <input type="file" id="excelInput" accept=".xlsx, .xls" hidden>
+                        </div>
+                    </div>
+
+                    <div id="controls" class="hidden">
+                        <div class="card">
+                            <h3>2. Diseño</h3>
+                            <div class="control-group">
+                                <label>Posición Vertical</label>
+                                <input type="range" id="posY" min="10" max="90" value="50">
+                            </div>
+                            
+                            <div class="control-group">
+                                <label>Fuente del Nombre</label>
+                                <select id="fontSelect" class="select-u">
+                                    <optgroup label="Elegantes">
+                                        <option value="'Cinzel', serif">Cinzel Academic</option>
+                                        <option value="'EB Garamond', serif">Garamond Royal</option>
+                                        <option value="'Libre Baskerville', serif">Baskerville Classic</option>
+                                    </optgroup>
+                                    <optgroup label="Modernas">
+                                        <option value="'Inter', sans-serif">Inter UI</option>
+                                        <option value="'Montserrat', sans-serif">Montserrat Bold</option>
+                                    </optgroup>
+                                    <optgroup label="Manuscritas">
+                                        <option value="'Dancing Script', cursive">Dancing Script</option>
+                                        <option value="'Playfair Display', serif">Playfair Elegance</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label>Color de Letra</label>
+                                <input type="color" id="colorPicker" value="#003b5c">
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>3. Talleres Detectados</h3>
+                            <div id="deportes-menu" class="taller-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="side-footer">
+                    <button id="btnGenerar" class="btn-main" disabled>
+                        <span>Generar Aprobados (.ZIP)</span>
+                        <div id="loader" class="loader hidden"></div>
+                    </button>
+                    
+                    <div id="progress-container" class="progress-container hidden">
+                        <div class="progress-bg">
+                            <div id="progress-bar"></div>
+                        </div>
+                        <span id="progress-text">Preparando...</span>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="viewer">
+                <div class="status-top">
+                    <div id="status-dot"></div>
+                    <span id="status-msg">Esperando archivos...</span>
+                </div>
+
+                <div class="canvas-box">
+                    <div id="preview-container" class="artboard">
+                        <img id="img-fondo" src="" alt="">
+                        <div id="overlay-data">
+                            <h2 id="txt-nombre">NOMBRE DEL ALUMNO</h2>
+                            <p id="txt-carrera">CARRERA DEL ALUMNO</p>
+                            <p id="txt-taller">TALLER SELECCIONADO</p>
+                            <span id="txt-folio">FOLIO: 000000</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer-firma">
+            FORMACIÓN INTEGRAL CUCBA • POR <strong>AARON GUZMAN HINOJOSA</strong> • 2026
+        </footer>
+    </div>
+    <script src="certificados.js"></script>
+</body>
+</html>

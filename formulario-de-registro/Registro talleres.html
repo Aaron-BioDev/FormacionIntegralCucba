@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Talleres CUCBA 2026-A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Registro talleres.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        input[type="text"], select { text-transform: uppercase; }
+        .nota-soporte { margin-top: 20px; padding: 15px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; font-size: 0.85em; color: #856404; }
+        #btnDescargar { display: none; margin-top: 15px; background-color: #e67e22; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <div class="visual-side">
+            <div class="visual-content">
+                <img src="Imagenes/agaveros.jpg" alt="Logo CUCBA" class="side-logo">
+                <h1 class="welcome-text">Registro Oficial</h1>
+                <p>Formación Integral CUCBA 2026-A</p>
+                <div class="nota-soporte">
+                    <strong>¿PERDISTE TU FOLIO?</strong><br>
+                    Manda correo a: <b>oscar.guzman6142@alumnos.udg.mx</b><br>
+                    Con tus datos: Nombre completo, Carrera, Taller y Código UDG.
+                </div>
+            </div>
+        </div>
+
+        <div class="form-side">
+            <form id="formulario">
+                <h2>1. Datos del Alumno</h2>
+                <label>Nombre Completo:</label>
+                <input type="text" id="nombreCompleto" name="nombreCompleto" placeholder="EJ: PEREZ GONZALEZ JUAN" required>
+
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>Código UDG:</label>
+                        <input type="text" name="codigoUDG" placeholder="EJ: 218765432" pattern="\d{7,10}" required>
+                    </div>
+                    <div class="half-col">
+                        <label>NSS (11 dígitos):</label>
+                        <input type="text" name="nss" placeholder="EJ: 12345678901" pattern="\d{11}" required>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>Celular:</label>
+                        <input type="tel" name="telefono" placeholder="EJ: 3312345678" pattern="\d{10}" required>
+                    </div>
+                    <div class="half-col">
+                        <label>Correo Institucional:</label>
+                        <input type="email" name="correo" placeholder="EJ: JUAN.PEREZ@ALUMNOS.UDG.MX" pattern=".+@alumnos\.udg\.mx" required style="text-transform: lowercase;">
+                    </div>
+                </div>
+
+                <label>Carrera:</label>
+                <select name="carrera" id="carrera" required>
+                    <option value="">-- SELECCIONA TU CARRERA --</option>
+                    <option>INGENIERÍA EN AGRONOMÍA</option>
+                    <option>LICENCIATURA EN BIOLOGÍA</option>
+                    <option>LICENCIATURA EN MEDICINA VETERINARIA Y ZOOTECNIA</option>
+                    <option>LICENSIATURA EN CIENCIAS BIOMEDICAS</option>
+                    <option>LICENCIATURA EN CIENCIA DE LOS ALIMENTOS</option>
+                    <option>LICENCIATURA EN AGRONEGOCIOS</option>
+                </select>
+
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>Tipo de Sangre:</label>
+                        <select name="tipoSangre" required>
+                            <option value="">--SELECCIONA--</option>
+                            <option>O+</option><option>O-</option><option>A+</option><option>A-</option>
+                            <option>B+</option><option>B-</option><option>AB+</option><option>AB-</option>
+                        </select>
+                    </div>
+                    <div class="half-col">
+                        <label>Fecha de Nacimiento:</label>
+                        <input type="date" name="fechaNacimiento" required>
+                    </div>
+                </div>
+
+                <h2>2. Contacto de Emergencia</h2>
+                <label>Nombre del Familiar:</label>
+                <input type="text" name="emergenciaNombre" placeholder="EJ: MARIA GONZALEZ" required>
+                
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>Parentesco:</label>
+                        <input type="text" name="emergenciaParentesco" placeholder="EJ: MADRE" required>
+                    </div>
+                    <div class="half-col">
+                        <label>Teléfono Emergencia:</label>
+                        <input type="tel" name="emergenciaTelefono" placeholder="EJ: 3312345678" required>
+                    </div>
+                </div>
+
+                <h2>3. Selección de Taller</h2>
+                <select name="taller" id="tallerSelect" required onchange="validarCupo(this)">
+                    <option value="">Cargando talleres y cupos...</option>
+                </select>
+
+                <button type="submit" id="btnEnviar">Confirmar Registro y Generar Folio</button>
+
+                <div id="resultadoRegistro" style="display:none; text-align:center; margin-top:20px; border: 2px dashed #27ae60; padding: 15px; background: #f4fff8;">
+                    <h3 style="color:#27ae60;">🌟 ¡Felicidades! 🌟</h3>
+                    <p>Te has registrado exitosamente en:</p>
+                    <h4 id="tallerConfirmado"></h4>
+                    <p>Tu folio único es: <b id="folioTexto" style="color: #27ae60; font-size: 1.2em;"></b></p>
+                    <p style="color: #e74c3c; font-weight: bold;">📸 ¡TOMA CAPTURA O DESCARGA EL PDF! 📸</p>
+                    <div id="qrcode" style="display:flex; justify-content:center; margin:10px 0;"></div>
+                    <button type="button" id="btnDescargar" onclick="generarPDF()">📥 Descargar Comprobante PDF</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="Registro talleres.js"></script>
+</body>
+</html>

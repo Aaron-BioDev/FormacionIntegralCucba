@@ -1,0 +1,227 @@
+/* Registro talleres.css - Optimizado para CUCBA 2026-A */
+
+/* === Colores/Variables base === */
+:root {
+    --primary-color: #00563f;    /* Verde UDG/CUCBA */
+    --secondary-color: #008060;  /* Verde vibrante visual */
+    --accent-color: #c02026;     /* Rojo institucional */
+    --text-dark: #333333;
+    --border-light: #e0e0e0;
+    --border-focus: #c02026;
+    --bg-light: #f9f9f9;
+}
+
+/* === 1. Estilos Generales === */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.registration-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* === 2. Lado Izquierdo - Visual (50%) === */
+.visual-side {
+    flex: 1;
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.visual-content {
+    max-width: 400px;
+}
+
+.side-logo {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.welcome-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Coordinadores */
+.coordinators-info {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.coordinator-card {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    padding: 15px;
+    width: 160px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.coordinator-photo {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.coordinator-name {
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.coordinator-role {
+    font-size: 0.7em;
+    opacity: 0.9;
+}
+
+/* === 3. Lado Derecho - Formulario === */
+.form-side {
+    flex: 1;
+    background-color: white;
+    padding: 50px;
+    overflow-y: auto; /* Permite scroll en el form si es largo */
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+}
+
+.form-side h2 {
+    color: var(--primary-color);
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-side h3 {
+    color: var(--primary-color);
+    font-size: 1.1em;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 10px;
+    margin: 30px 0 15px;
+}
+
+/* === 4. Inputs y Formulario === */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85em;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid var(--border-light);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(192, 32, 38, 0.1);
+    outline: none;
+    background-color: white;
+}
+
+/* Estilo especial para los Optgroups (Secciones de las fotos) */
+optgroup {
+    font-style: normal;
+    background-color: #eee;
+    color: var(--primary-color);
+}
+
+option {
+    background-color: white;
+    color: var(--text-dark);
+}
+
+/* Filas dobles */
+.input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.half-col {
+    flex: 1;
+}
+
+/* === 5. Botón y Feedback === */
+button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s, background-color 0.3s;
+    box-shadow: 0 4px 12px rgba(192, 32, 38, 0.3);
+}
+
+button[type="submit"]:hover {
+    background-color: #a01a1f;
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+#respuesta {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+/* === 6. Responsivo === */
+@media (max-width: 900px) {
+    .registration-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .visual-side {
+        padding: 40px 20px;
+    }
+
+    .form-side {
+        padding: 30px 20px;
+        overflow-y: visible;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
