@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Oficial Talleres CUCBA 2026-A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Registro talleres.css">
+      <link rel="icon" href="/Formacion.jpg" type="image/x-icon">
+</head>
+<body>
+    <div class="registration-container">
+        <div class="visual-side">
+            <div class="visual-content">
+                <img src="Imagenes/agaveros.jpg" alt="Logo CUCBA" class="side-logo">
+                <h1 class="welcome-text">Registro 2026-A</h1>
+                <div class="coordinators-info">
+                    <div class="coordinator-card">
+                        <img src="Imagenes/Fotos Cordinadores/luis daniel.jpg" alt="Luis" class="coordinator-photo">
+                        <div><p class="coordinator-name">Luis Daniel Fernández</p><p class="coordinator-role">Coordinador Deportes</p></div>
+                    </div>
+                    <div class="coordinator-card">
+                        <img src="Imagenes/Fotos Cordinadores/teresita.jpg" alt="Teresita" class="coordinator-photo">
+                        <div><p class="coordinator-name">Teresita de Jesús Rizo</p><p class="coordinator-role">Coordinadora Cultura</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-side">
+            <form id="formulario">
+                <h2>1. Datos Personales</h2>
+                
+                <label>Nombre Completo (Sin abreviaturas):</label>
+                <input type="text" name="nombreCompleto" placeholder="Ej: PEREZ GONZALEZ JUAN CARLOS" required>
+
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>Código UDG (7-10 dígitos):</label>
+                        <input type="text" name="codigoUDG" pattern="\d{7,10}" placeholder="Ej: 218765432" required>
+                    </div>
+                    <div class="half-col">
+                        <label>Teléfono Celular (10 dígitos):</label>
+                        <input type="tel" name="telefono" pattern="\d{10}" placeholder="Ej: 3312345678" required>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>NSS (11 dígitos):</label>
+                        <input type="text" name="nss" pattern="\d{11}" placeholder="Ej: 12345678901" required>
+                    </div>
+                    <div class="half-col">
+                        <label>Fecha de Nacimiento:</label>
+                        <input type="date" name="fechaNacimiento" required>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>Tipo de Sangre:</label>
+                        <select name="tipoSangre" required>
+                            <option value="">--Selecciona--</option>
+                            <option value="O+">O+</option><option value="O-">O-</option>
+                            <option value="A+">A+</option><option value="A-">A-</option>
+                            <option value="B+">B+</option><option value="B-">B-</option>
+                        </select>
+                    </div>
+                    <div class="half-col">
+                        <label>Correo Institucional:</label>
+                        <input type="email" name="correo" pattern=".+@alumnos\.udg\.mx" placeholder="Ej: juan.perez@alumnos.udg.mx" required title="Debe ser @alumnos.udg.mx">
+                    </div>
+                </div>
+
+
+
+                <label>Carrera:</label>
+<select name="carrera" required>
+    <option value="">-- Selecciona tu carrera --</option>
+    <option value="Ingeniero Agrónomo">Ingeniero Agrónomo</option>
+    <option value="Licenciatura en Agronegocios">Licenciatura en Agronegocios</option>
+    <option value="Licenciatura en Biología">Licenciatura en Biología</option>
+    <option value="Licenciatura en Ciencia de los Alimentos">Licenciatura en Ciencia de los Alimentos</option>
+    <option value="Licenciatura en Ciencias Biomédicas">Licenciatura en Ciencias Biomédicas</option>
+    <option value="Licenciatura en Medicina Veterinaria y Zootecnia">Licenciatura en Medicina Veterinaria y Zootecnia</option>
+</select>
+
+
+                <h2>2. Contacto de Emergencia</h2>
+                <div class="input-row">
+                    <div class="half-col">
+                        <label>Nombre Familiar:</label>
+                        <input type="text" name="emergenciaNombre" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="half-col">
+                        <label>Parentesco:</label>
+                        <input type="text" name="emergenciaParentesco" placeholder="Ej: Madre, Padre" required>
+                    </div>
+                </div>
+                <label>Teléfono de Emergencia:</label>
+                <input type="tel" name="emergenciaTelefono" pattern="\d{10}" placeholder="33XXXXXXXX" required>
+
+                <h2>3. Selección de Taller (6 Secciones Oficiales)</h2>
+                <select id="tallerSelect" name="taller" required>
+                    <option value="">-- Elige una opción --</option>
+                    
+                    <optgroup label="1. DEPORTES">
+                        <option value="Karate-LV-09-11">Karate-Do (Lunes a Viernes 09:00 - 11:00)</option>
+                        <option value="Karate-LV-11-13">Karate-Do (Lunes a Viernes 11:00 - 13:00)</option>
+                        <option value="Taekwondo-LV-09-11">Taekwondo (Lunes a Viernes 09:00 - 11:00)</option>
+                        <option value="Taekwondo-LV-11-13">Taekwondo (Lunes a Viernes 11:00 - 13:00)</option>
+                        <option value="Boxeo-Mie-Jue-09-11">Boxeo (Miércoles y Jueves 09:00 - 11:00)</option>
+                        <option value="Basket-Lun-Jue-09-11">Básquetbol Mixto (Lunes y Jueves 09:00 - 11:00)</option>
+                        <option value="Futbol-Varonil-Lun-Mar-11-13">Fútbol Varonil (Lunes y Martes 11:00 - 13:00)</option>
+                        <option value="Arqueria-Lun-Jue-13-17">Arquería (Lun 13-15 / Jue 15-17)</option>
+                        <option value="Tocho-Mar-Jue-09-11">Tocho Bandera (Martes y Jueves 09:00 - 11:00)</option>
+                        <option value="Tennis-Jue-09-11">Tennis (Jueves 09:00 - 11:00)</option>
+                        <option value="Voleibol-Mie-11-13">Voleibol Intermedio (Miércoles 11:00 - 13:00)</option>
+                    </optgroup>
+
+                    <optgroup label="2. SALUD">
+                        <option value="Yoga-Lun-Mar-09-11">Yoga (Lunes y Martes 09:00 - 11:00)</option>
+                        <option value="Huertos-Mar-Mie-09-13">Huertos Urbanos (Mar 11-13 / Mie 09-11)</option>
+                        <option value="Estimulantes-Mar-Jue-09-13">Mariguana y estimulantes (Mar 11-13 / Jue 09-11)</option>
+                    </optgroup>
+
+                    <optgroup label="3. ARTE Y CULTURA">
+                        <option value="Jazz-Lun-09-11">Jazz Principiantes (Lunes 09:00 - 11:00)</option>
+                        <option value="Cerveza-Lun-09-11">Análisis Cerveza (Lunes 09:00 - 11:00)</option>
+                        <option value="Danza-Folk-Lun-Mie-11-13">Danza Folklorika (Lunes y Miércoles 11:00 - 13:00)</option>
+                        <option value="Teatro-Mie-Jue-13-15">Teatro (Miércoles y Jueves 13:00 - 15:00)</option>
+                        <option value="Crochet-Lun-09-15">Crochet (Lun 09-11 / 13-15)</option>
+                        <option value="Kpop-Mar-12-14">K-pop (Martes 12:00 - 14:00)</option>
+                    </optgroup>
+
+                    <optgroup label="4. RESPONSABILIDAD SOCIAL">
+                        <option value="Brigada-LV-Horario">Brigada CUCBA (Lunes a Viernes - Horario Variable)</option>
+                        <option value="Braille-Lun-09-11">Taller de Braille (Lunes 09:00 - 11:00)</option>
+                        <option value="Manejo-Fuego-Mie-11-13">Manejo del Fuego (Miércoles 11:00 - 13:00)</option>
+                        <option value="Ambiente-Soc-Mar-11-13">Ambiente y Sociedad (Martes 11:00 - 13:00)</option>
+                    </optgroup>
+
+                    <optgroup label="5. FORMACIÓN / EMPRENDIMIENTO">
+                        <option value="Diafanizacion-Lun-09-11">Diafanización (Lunes 09:00 - 11:00)</option>
+                        <option value="Etologia-Mar-11-13">Etología Pequeñas Especies (Martes 11:00 - 13:00)</option>
+                        <option value="Edu-Financiera-Mie-11-13">Educación Financiera (Miércoles 11:00 - 13:00)</option>
+                    </optgroup>
+
+                    <optgroup label="6. IDIOMAS">
+                        <option value="Chino-Lun-11-17">Chino Mandarín (Lunes 11-13 / 15-17)</option>
+                        <option value="Nahuatl-Lun-13-15">Náhuatl (Lunes 13:00 - 15:00)</option>
+                        <option value="Aleman-Jue-11-13">Alemán (Jueves 11:00 - 13:00)</option>
+                    </optgroup>
+                </select>
+
+                <button type="submit" id="btnEnviar">Confirmar Registro</button>
+                <div id="respuesta"></div>
+            </form>
+        </div>
+    </div>
+    <script src="Registro talleres.js"></script>
+</body>
+</html>

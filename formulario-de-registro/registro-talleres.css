@@ -1,0 +1,260 @@
+/* Registro talleres.css - Diseño Moderno SaaS 2026-A */
+
+/* === Colores y Variables de Diseño Limpio === */
+:root {
+    --primary-color: #004d36;    /* Verde UDG/CUCBA Profundo */
+    --secondary-color: #008f65;  /* Verde vibrante para interacciones */
+    --bg-light: #f4f7f6;         /* Fondo gris súper claro */
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --border-color: #dfe6e9;
+    --input-bg: #ffffff;
+    --shadow-soft: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* === 1. Estilos Generales === */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-main);
+}
+
+/* Contenedor Flotante Principal */
+.registration-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 90vh; /* Flotante en escritorio */
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    margin: 20px;
+}
+
+/* === 2. Lado Izquierdo - Visual (Decorativo Moderno) === */
+.visual-side {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.visual-side::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent);
+}
+
+.visual-content {
+    max-width: 400px;
+    position: relative;
+    z-index: 10;
+}
+
+.side-logo {
+    width: 140px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+    border-radius: 15px; /* Por si la imagen es plana */
+}
+
+.welcome-text {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.visual-content p {
+    font-size: 1.1em;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* Nota de soporte estilizada */
+.nota-soporte {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    font-size: 0.9em;
+    color: #fff;
+    line-height: 1.5;
+}
+.nota-soporte b { color: #ffeab0; }
+
+/* === 3. Lado Derecho - Formulario Limpio === */
+.form-side {
+    flex: 1.2; /* Un poco más de espacio al form */
+    background-color: #ffffff;
+    padding: 60px 80px;
+    overflow-y: auto;
+}
+
+/* Títulos de sección */
+.form-side h2 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-bottom: 25px;
+    margin-top: 40px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+.form-side h2:first-of-type { margin-top: 0; }
+
+/* === 4. Diseño de Inputs Modernos === */
+.input-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.half-col { flex: 1; }
+
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.95em;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Excepción para inputs en row (el margen lo da la fila) */
+.input-row input, .input-row select { margin-bottom: 0; }
+
+input:focus, select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(0, 143, 101, 0.15);
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* === Diseño Exclusivo: Fecha de Nacimiento (Date Input) === */
+input[type="date"] {
+    position: relative;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text-main);
+    text-transform: uppercase;
+}
+
+/* Personalizando el botoncito de calendario del navegador */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: var(--secondary-color);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Pone el icono de calendario en color blanco */
+    filter: invert(1) brightness(200%);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* === 5. Botón Premium === */
+button[type="submit"] {
+    width: 100%;
+    padding: 18px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 143, 101, 0.3);
+}
+
+button[type="submit"]:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 77, 54, 0.4);
+}
+
+button[type="submit"]:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* === 6. Resultado y Feedback === */
+#resultadoRegistro {
+    border-radius: 16px;
+    border: none !important;
+    background: #f0fdf4 !important;
+    box-shadow: inset 0 0 0 2px #22c55e;
+}
+#resultadoRegistro h3 { font-size: 1.5em; margin-bottom: 15px; }
+
+#btnDescargar {
+    background-color: var(--text-main) !important;
+    border-radius: 10px !important;
+    font-size: 1em !important;
+    transition: 0.3s;
+}
+#btnDescargar:hover { background-color: #000 !important; }
+
+/* === 7. Responsivo (Móviles) === */
+@media (max-width: 900px) {
+    .registration-container {
+        flex-direction: column;
+        height: auto;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .visual-side {
+        padding: 40px 20px;
+    }
+    
+    .form-side {
+        padding: 40px 20px;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .input-row .half-col { margin-bottom: 20px; }
+    .input-row .half-col:last-child { margin-bottom: 0; }
+}
