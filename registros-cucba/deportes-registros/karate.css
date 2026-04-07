@@ -1,12 +1,13 @@
+/* --- VARIABLES Y RESET (MODO OSCURO COMPATIBLE) --- */
 :root {
-    --color-bg: #f8f8f8;
+    --color-bg: #121212;
     --color-accent: #d32f2f; /* Rojo Karate */
-    --color-qr-bg: #fff8e1;
+    --color-qr-bg: rgba(255, 143, 0, 0.1); /* Ajustado a fondo oscuro */
     --color-qr-border: #ff8f00;
-    --color-dark: #222222;
-    --color-white: #ffffff;
+    --color-dark: #f5f5f5; /* Texto es claro en fondo oscuro */
+    --color-white: #1e1e1e; /* Color de las tarjetas ahora oscuro */
     --radius: 16px;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Sombra un poco más densa */
     --font-family: 'Poppins', sans-serif;
 }
 
@@ -23,7 +24,7 @@ body {
     line-height: 1.6;
 }
 
-/* Header */
+/* --- HEADER --- */
 .header {
     background: var(--color-white);
     padding: 30px 20px;
@@ -44,41 +45,116 @@ body {
     color: var(--color-accent);
 }
 
-/* Contenedor */
+/* --- CONTENEDOR PRINCIPAL --- */
 .container {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Video */
-.video-container {
+/* --- CARRUSEL CORREGIDO (16:9) --- */
+.visual-section {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.carrusel-taller {
     position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
+    width: 100%;
+    background: #000;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
-    margin-bottom: 30px;
+    border: 3px solid var(--color-accent);
 }
 
-.video-container iframe {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    border: none;
+.slides-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
-.video-overlay {
+.slides-container::-webkit-scrollbar { display: none; }
+.slides-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+.slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    position: relative;
+    background: #000;
+}
+
+.slide img, 
+.slide video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Proporción de video */
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.8);
+}
+
+.info-paso {
     position: absolute;
-    bottom: 10px; left: 10px;
-    background: rgba(0,0,0,0.7);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 20px 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
     color: white;
-    padding: 5px 15px;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
 }
 
-/* Info Cards */
+.num {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 0.8;
+}
+
+.info-paso h3 { font-size: 1.1rem; margin: 0; color: var(--color-accent); text-transform: uppercase; }
+.info-paso p { font-size: 0.9rem; margin: 0; opacity: 0.9; }
+
+/* Botones Navegación Carrusel */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.nav-btn:hover { background: var(--color-accent); transform: translateY(-50%) scale(1.1); }
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.scroll-hint {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--color-accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: bold;
+}
+
+/* --- INFO CARDS (HORARIOS Y LUGAR) --- */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -87,7 +163,7 @@ body {
 }
 
 .info-card {
-    background: white;
+    background: var(--color-white);
     padding: 20px;
     border-radius: var(--radius);
     text-align: center;
@@ -97,7 +173,7 @@ body {
 .info-card h2 { color: var(--color-accent); margin-bottom: 10px; }
 .info-card ul { list-style: none; }
 
-/* Entrenadores */
+/* --- ENTRENADORES --- */
 .coaches { text-align: center; margin-bottom: 40px; }
 .coach-grid {
     display: flex;
@@ -107,7 +183,7 @@ body {
 }
 
 .coach-card {
-    background: white;
+    background: var(--color-white);
     padding: 20px;
     border-radius: var(--radius);
     width: 200px;
@@ -122,9 +198,9 @@ body {
     margin-bottom: 10px;
 }
 
-/* Requisitos y QR */
+/* --- REQUISITOS Y QR --- */
 .requirements {
-    background: white;
+    background: var(--color-white);
     padding: 30px 20px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -146,7 +222,7 @@ body {
 
 .qr-icon { font-size: 3rem; color: var(--color-qr-border); }
 .qr-text h3 { color: #e65100; margin: 0; }
-.qr-text p { font-size: 0.95rem; color: #5d4037; }
+.qr-text p { font-size: 0.95rem; color: #b0b0b0; }
 
 .req-grid {
     display: grid;
@@ -158,7 +234,7 @@ body {
 .req-item i { font-size: 2rem; color: var(--color-accent); margin-bottom: 10px; display: block; }
 .req-item p { font-size: 0.85rem; }
 
-/* Botones */
+/* --- BOTONES DE ACCIÓN --- */
 .buttons {
     display: flex;
     justify-content: center;
@@ -176,18 +252,21 @@ body {
     transition: 0.3s;
 }
 
-.btn-primary { background: var(--color-accent); color: white; }
-.btn-secondary { background: #555; color: white; }
+.btn-primary { background: var(--color-accent); color: white; border: none; }
+.btn-secondary { background: #555; color: white; border: none; }
 
+/* --- FOOTER --- */
 .footer {
     text-align: center;
     padding: 30px;
-    background: #eee;
+    background: #111;
 }
 
-/* Mobile */
+/* --- RESPONSIVO --- */
 @media (max-width: 600px) {
     .qr-attendance-box { flex-direction: column; text-align: center; }
     .buttons { flex-direction: column; align-items: center; }
-    .btn { width: 100%; }
+    .btn { width: 100%; max-width: none; }
+    .num { font-size: 2rem; }
+    .slide img, .slide video { aspect-ratio: 4 / 3; }
 }

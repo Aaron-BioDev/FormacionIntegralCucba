@@ -3,28 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon (Ícono de pestaña dinámica) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥋</text></svg>">
+    
+    <!-- Open Graph y Metadatos para SEO/Compartir -->
     <title>Taller de Karate Do | CUCBA</title>
+    <meta name="description" content="Inscríbete al Taller de Karate Do de Formación Integral CUCBA. Horarios, requisitos y registro en línea.">
+    <meta property="og:title" content="🥋 Taller de Karate Do | Formación Integral CUCBA">
+    <meta property="og:description" content="Taller oficial de Karate del CUCBA. Únete, mantente en forma y registra tus horas. ¡Inscríbete ahora!">
+    <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="karate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <div class="gif-header">
-            <img src="/REGISTROS CUCBA/DEPORTES - REGISTROS/Animado gifts/karate-13.gif" alt="Karate Animation">
-        </div>
+
         <div class="logo">🥋</div>
         <h1>Taller de Karate Do</h1>
     </header>
 
     <main class="container">
-        <section class="video-section">
-            <div class="video-container">
-                <iframe 
-                    src="https://drive.google.com/file/d/1dEtCthjs7SbMLNdZbddAT4PUnui3wiqu/preview"
-                    allow="autoplay" allowfullscreen>
-                </iframe>
-                <div class="video-overlay">Presentación del Taller</div>
+        <!-- SECCIÓN DE CARRUSEL (REEMPLAZA AL VIDEO) -->
+        <section class="visual-section">
+            <div class="carrusel-taller">
+                <div class="slides-container">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <img src="/registros-cucba/deportes-registros/Videos/Karate video/assents/photo_2026-04-06_18-17-44.jpg" alt="Técnica básica">
+                        <div class="info-paso">
+                            <span class="num">01</span>
+                            <div class="txt">
+                                <h3>Fundamentos</h3>
+                                <p>Posturas iniciales y equilibrio del cuerpo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="/registros-cucba/deportes-registros/Videos/Karate video/assents/kata1.jpg" alt="Defensa" loading="lazy">
+                        <div class="info-paso">
+                            <span class="num">02</span>
+                            <div class="txt">
+                                <h3>Defensa</h3>
+                                <p>Bloqueos efectivos para protección personal.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="/registros-cucba/deportes-registros/Videos/Karate video/assents/photo_2026-04-06_18-17-37.jpg" alt="Kata" loading="lazy">
+                        <div class="info-paso">
+                            <span class="num">03</span>
+                            <div class="txt">
+                                <h3>Disciplina</h3>
+                                <p>Ejecución de Katas para mejorar la coordinación.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Añade esto dentro de .carrusel-taller -->
+<button class="nav-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+<button class="nav-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                <!-- Indicador visual de deslizamiento -->
+                <div class="scroll-hint">Desliza <i class="fas fa-arrow-right"></i></div>
             </div>
         </section>
 
@@ -46,11 +92,11 @@
             <h2>Nuestros Talleristas</h2>
             <div class="coach-grid">
                 <div class="coach-card">
-                    <img src="Fotos Talleristas/IMG-20240815-WA0036.jpg" alt="Sensei Juan Pérez">
+                    <img src="Fotos Talleristas/IMG-20240815-WA0036.jpg" alt="Sensei Juan Pérez" loading="lazy">
                     <p>Sensei Juan Pérez</p>
                 </div>
                 <div class="coach-card">
-                    <img src="Fotos Talleristas/IMG-20240815-WA0036.jpg" alt="Sensei María González">
+                    <img src="Fotos Talleristas/IMG-20240815-WA0036.jpg" alt="Sensei María González" loading="lazy">
                     <p>Sensei María González</p>
                 </div>
             </div>
@@ -96,7 +142,7 @@
             </div>
         </div>
     </main>
-
+<script src="karate.js"></script>
     <footer class="footer">
         <p><strong>Formación Integral CUCBA</strong></p>
     </footer>
