@@ -1,4 +1,4 @@
-const URL = "https://script.google.com/macros/s/AKfycbyVVzDWoCEGsNG_p7i8npOQtxPgrCl4OAQ7LRqJ4QVSvIMxrB20iIqzqvLlk_fDNLBacA/exec"; 
+const URL = "https://script.google.com/macros/s/AKfycby8f7KuTvsJHL-HLcjuJVvbwaHti1q0WSi-lAxng5azJezpYctYKa7z_eyx2aRS339viw/exec";
 let talleresData = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,9 +16,9 @@ function initCaptcha() {
     correctAnswer = a + b;
     const elA = document.getElementById("mathA");
     const elB = document.getElementById("mathB");
-    if(elA && elB) { 
-        elA.textContent = a; 
-        elB.textContent = b; 
+    if (elA && elB) {
+        elA.textContent = a;
+        elB.textContent = b;
     }
 }
 
@@ -32,9 +32,9 @@ async function cargarTalleres() {
     try {
         const res = await fetch(URL + "?accion=obtenerTalleres");
         talleresData = await res.json();
-        
+
         select.innerHTML = "<option value=''>-- SELECCIONA UN TALLER --</option>";
-        
+
         const grupos = {};
         talleresData.forEach(t => {
             const area = t.nombreArea || "OTROS";
@@ -45,7 +45,7 @@ async function cargarTalleres() {
         for (const area in grupos) {
             const optgroup = document.createElement("optgroup");
             optgroup.label = area.toUpperCase();
-            
+
             grupos[area].forEach(t => {
                 const option = document.createElement("option");
                 option.value = t.id;
@@ -106,7 +106,7 @@ if (form) {
         localStorage.setItem("lastSubmitTime", now);
         // --- FIN DEL BLINDAJE --- //
         const btn = document.getElementById("btnEnviar");
-        
+
         // Obtenemos el código UDG para buscarlo después
         const formData = new FormData(form);
         const codUDG = formData.get("codigoUDG");
@@ -153,14 +153,14 @@ function mostrarExito(folio, taller) {
     document.getElementById("btnEnviar").style.display = "none";
     const divRes = document.getElementById("resultadoRegistro");
     divRes.style.display = "block";
-    
+
     document.getElementById("folioTexto").textContent = folio;
     document.getElementById("tallerConfirmado").textContent = taller;
     document.getElementById("btnDescargar").style.display = "block";
 
     // Limpiar QR anterior y crear el nuevo con el Folio real
     const qrDiv = document.getElementById("qrcode");
-    qrDiv.innerHTML = ""; 
+    qrDiv.innerHTML = "";
     new QRCode(qrDiv, {
         text: folio,
         width: 160,

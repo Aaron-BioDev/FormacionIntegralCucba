@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Asistencia - CUCBA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../formacion.jpg" type="image/x-icon">
+</head>
+<body>
+    <div class="background-decor"></div>
+    
+    <div class="container">
+        <header>
+            <img src="../formacion.jpg" alt="Logo CUCBA" class="logo">
+            <h1>Consulta de Asistencia</h1>
+            <p>Formación Integral CUCBA</p>
+        </header>
+
+        <section class="search-box">
+            <div class="input-group">
+                <input type="text" id="searchInput" placeholder="Ingresa tu Código UDG o Folio" autocomplete="off">
+                <button id="btnSearch">
+                    <span class="icon">🔍</span> Buscar
+                </button>
+            </div>
+            <p class="hint">Ejemplo: 215487963 o CUCBA-BAS-153022-45</p>
+        </section>
+
+        <div id="loading" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Consultando registros...</p>
+        </div>
+
+        <section id="results" class="results-container" style="display: none;">
+            <div class="student-info">
+                <h2 id="studentName"></h2>
+            </div>
+            <div id="talleresList">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </section>
+
+        <div id="noResults" class="error-msg" style="display: none;">
+            <span class="icon">⚠️</span>
+            <p>No se encontraron registros para el código o folio ingresado.</p>
+        </div>
+
+        <footer>
+            <a href="../index.html" class="btn-back">← Volver al Inicio</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

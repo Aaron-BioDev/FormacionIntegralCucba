@@ -96,6 +96,35 @@ body {
     color: #fff;
     line-height: 1.5;
 }
+.support-email {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #ffeab0;
+    color: #004d36;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9em;
+    margin: 10px 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 100%;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+.support-email:hover {
+    background: #fff;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.support-email span {
+    font-size: 1.1em;
+    flex-shrink: 0;
+}
 .nota-soporte b { color: #ffeab0; }
 
 /* === 3. Lado Derecho - Formulario Limpio === */
@@ -226,10 +255,14 @@ button[type="submit"]:disabled {
 #resultadoRegistro h3 { font-size: 1.5em; margin-bottom: 15px; }
 
 #btnDescargar {
+    display: none;
+    margin-top: 15px;
     background-color: var(--text-main) !important;
     border-radius: 10px !important;
     font-size: 1em !important;
     transition: 0.3s;
+    width: 100%;
+    font-weight: bold;
 }
 #btnDescargar:hover { background-color: #000 !important; }
 
