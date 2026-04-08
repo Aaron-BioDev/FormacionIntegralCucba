@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanner CUCBA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Web App Asistencias QR/asistencias.css">
+    <style>
+        .back-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .back-home:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+    </style>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+
+
+<!-- Enlace al manifest -->
+<link rel="manifest" href="/Web App Asistencias QR/manifest.json">
+
+<!-- Meta para color de barra en móviles -->
+<meta name="theme-color" content="#000000">
+
+<!-- Registro del Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('PWA lista 🚀'))
+      .catch(err => console.log('Error al registrar PWA', err));
+  }
+</script>
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+<a href="/" class="back-home">← Salir</a>
+
+<div class="app-container">
+    <header class="app-header">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            SISTEMA DE ASISTENCIA ACTIVO
+        </div>
+        <h1 style="font-size: 22px; margin: 0;">CUCBA 2026A</h1>
+    </header>
+
+    <section class="taller-selector-container">
+        <span class="select-label">Taller impartido hoy:</span>
+        <select id="tallerActual">
+            <option value="">⏳ Cargando talleres...</option>
+        </select>
+    </section>
+
+    <main class="scanner-viewport">
+        <div class="scan-line"></div>
+        <div id="reader"></div>
+    </main>
+
+    <section class="result-panel">
+        <div class="res-text" id="resultado">ESPERANDO ESCANEO...</div>
+    </section>
+
+    <section class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value" id="count">0</div>
+            <div class="stat-label">Escaneos Hoy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="lastTime">--:--</div>
+            <div class="stat-label">Último pulso</div>
+        </div>
+    </section>
+</div>
+
+<audio id="sound-success">
+    <source src="/Web App Asistencias QR/Sound/success.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="sound-error">
+    <source src="/Web App Asistencias QR/Sound/error.mp3" type="audio/mpeg">
+</audio>
+
+<script src="/Web App Asistencias QR/asistencias.js"></script>
+</body>
+</html>

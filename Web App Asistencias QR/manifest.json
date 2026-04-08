@@ -1,0 +1,20 @@
+{
+  "name": "CUCBA QR SCANNER",
+  "short_name": "ASISTENCIAS CUCBA QR",
+  "start_url": "./asistencias.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "ico192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "ico512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
