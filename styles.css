@@ -146,29 +146,92 @@ nav ul li:hover::after {
     letter-spacing: 6px;
 }
 
+/* ==========================================
+   REDES SOCIALES — Glassmorphism
+   ========================================== */
 .social {
     position: absolute;
     z-index: 10;
-    bottom: 20px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    justify-content: center;
+    gap: 14px;
     align-items: center;
+    list-style: none;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
 }
+
 .social li {
     list-style: none;
 }
 
-.social li a {
-    display: inline-block;
-    margin-right: 20px;
-    filter: invert(1);
-    transform: scale(0.5);
-    transition: 0.5s;
+.social-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease,
+                box-shadow 0.3s ease, border-color 0.3s ease;
+    min-width: 52px;
 }
 
-.social li a:hover {
-    transform: scale(0.5) translateY(-15px);
+.social-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: #fff;
+    flex-shrink: 0;
 }
+
+.social-label {
+    font-size: 8px;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Segoe UI', sans-serif;
+    white-space: nowrap;
+}
+
+.social-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 4px;
+    align-self: center;
+}
+
+.social-btn:hover {
+    transform: translateY(-6px) scale(1.08);
+}
+
+.social-btn:hover .social-label {
+    color: #fff;
+}
+
+
+/* Colores de marca en hover */
+.social-btn.fb:hover {
+    background: rgba(24, 119, 242, 0.75);
+    border-color: #1877f2;
+    box-shadow: 0 8px 22px rgba(24, 119, 242, 0.45);
+}
+.social-btn.ig:hover {
+    background: linear-gradient(135deg, rgba(253,88,73,0.8), rgba(214,36,159,0.8));
+    border-color: #e1306c;
+    box-shadow: 0 8px 22px rgba(225, 48, 108, 0.45);
+}
+
 
 .menu {
     position: absolute;
